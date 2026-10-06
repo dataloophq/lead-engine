@@ -19,7 +19,10 @@ jobs:
 
       - name: Installazione Dipendenze
         run: |
-          pip install feedparser
+          pip install feedparser supabase
 
       - name: Esecuzione Motore Dati
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         run: python scraper.py
